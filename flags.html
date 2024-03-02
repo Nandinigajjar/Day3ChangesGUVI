@@ -1,0 +1,24 @@
+Use the rest countries' API URL ->https://restcountries.com/v3.1/all and display all the countries flags in the console. 
+
+fetch('https://restcountries.com/v3.1/all')
+    .then(response => response.json())
+    .then(data => {
+       
+        const countries = [];
+
+        data.forEach(country => {
+           
+            if (country.flags) {
+                
+                const countryObj = {
+                    name: country.name.common,
+                    flag: country.flags.svg
+                };
+
+                countries.push(countryObj);
+            }
+        });
+
+        console.log(countries);
+    })
+    .catch(error => console.log('Error fetching data:', error));

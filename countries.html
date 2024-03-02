@@ -1,0 +1,22 @@
+Use the same rest countries and print all the countries name, regions,sub-region and populations.
+
+fetch('https://restcountries.com/v3.1/all')
+    .then(response => response.json())
+    .then(data => {
+        
+        data.forEach(country => {
+            
+            const name = country.name.common;
+            const region = country.region;
+            const subRegion = country.subregion;
+            const population = country.population;
+
+            
+            console.log("Country:", name);
+            console.log("Region:", region);
+            console.log("Sub-region:", subRegion);
+            console.log("Population:", population);
+            console.log("---------------------------------------------");
+        });
+    })
+    .catch(error => console.log('Error fetching data:', error));
